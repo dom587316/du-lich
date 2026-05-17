@@ -15,15 +15,15 @@
             --primary-dark: #0284c7;
             --secondary: #06b6d4;
             --accent: #f97316;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-dark: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
             --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #10b981 100%);
-            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0ea5e9 100%);
-            --glass-bg: rgba(30, 41, 59, 0.8);
-            --glass-border: rgba(148, 163, 184, 0.1);
-            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-hero: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #bae6fd 100%);
+            --glass-bg: rgba(255, 255, 255, 1);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +38,7 @@
 
         /* Navbar */
         .navbar-custom {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
             padding: 0.75rem 0;
@@ -46,23 +46,18 @@
         }
 
         .navbar-custom.scrolled {
-            background: rgba(15, 23, 42, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
         .navbar-brand {
             font-weight: 800;
             font-size: 1.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .navbar-brand i {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .nav-link {
@@ -129,21 +124,21 @@
         /* Cards */
         .card-glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
         }
 
         .card-glass:hover {
             transform: translateY(-8px);
             border-color: rgba(14, 165, 233, 0.3);
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.1);
         }
 
         .card-glass .card-img-top {
-            height: 220px;
+            height: 260px;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -163,16 +158,16 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: linear-gradient(transparent, rgba(15, 23, 42, 0.8));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
         }
 
         .card-glass .card-body {
-            padding: 1.25rem;
+            padding: 1.5rem;
         }
 
         .card-glass .card-title {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.4;
             margin-bottom: 0.5rem;
         }
@@ -189,7 +184,7 @@
 
         .card-glass .card-text {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
@@ -238,10 +233,7 @@
         }
 
         .section-header .gradient-text {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .section-header p {
@@ -251,7 +243,7 @@
 
         /* Footer */
         .footer {
-            background: rgba(15, 23, 42, 0.95);
+            background: #f8fafc;
             border-top: 1px solid var(--glass-border);
             padding: 3rem 0 1.5rem;
             margin-top: 4rem;
@@ -260,10 +252,7 @@
         .footer h5 {
             font-weight: 700;
             margin-bottom: 1.25rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .footer a {
@@ -315,6 +304,7 @@
         .pagination .page-item.active .page-link {
             background: var(--gradient-primary);
             border-color: transparent;
+            color: white !important;
         }
 
         /* Search */
@@ -498,15 +488,15 @@
                                 <img src="{{ auth()->user()->avatar_url }}" alt="Avatar" class="user-avatar">
                                 <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" style="background: var(--bg-card); border: 1px solid var(--glass-border);">
+                            <ul class="dropdown-menu dropdown-menu-end" style="background: var(--bg-card); border: 1px solid var(--glass-border); box-shadow: var(--shadow);">
                                 <li>
-                                    <a class="dropdown-item text-light" href="{{ route('profile.show') }}">
+                                    <a class="dropdown-item text-dark" href="{{ route('profile.show') }}">
                                         <i class="fas fa-user me-2"></i> Hồ sơ
                                     </a>
                                 </li>
                                 @if(auth()->user()->isAdmin())
                                 <li>
-                                    <a class="dropdown-item text-light" href="{{ route('admin.dashboard') }}">
+                                    <a class="dropdown-item text-dark" href="{{ route('admin.dashboard') }}">
                                         <i class="fas fa-tachometer-alt me-2"></i> Admin
                                     </a>
                                 </li>
@@ -515,7 +505,7 @@
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <button type="submit" class="dropdown-item text-light">
+                                        <button type="submit" class="dropdown-item text-dark">
                                             <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
                                         </button>
                                     </form>

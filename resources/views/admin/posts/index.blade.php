@@ -19,7 +19,7 @@
     @forelse($posts as $post)
     <tr>
         <td>{{ $post->id }}</td>
-        <td><a href="{{ route('posts.show', $post->slug) }}" class="text-white text-decoration-none" target="_blank">{{ Str::limit($post->title, 40) }}</a></td>
+        <td><a href="{{ route('posts.show', $post->slug) }}" class="text-dark text-decoration-none" target="_blank">{{ Str::limit($post->title, 40) }}</a></td>
         <td><span class="badge-status badge-published">{{ $post->category->name }}</span></td>
         <td>{{ $post->user->name }}</td>
         <td><span class="badge-status {{ $post->status==='published'?'badge-published':'badge-draft' }}">{{ $post->status==='published'?'Đã đăng':'Nháp' }}</span></td>

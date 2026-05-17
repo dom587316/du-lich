@@ -36,11 +36,9 @@ class DatabaseSeeder extends Seeder
 
         // Create Categories
         $categoriesData = [
-            ['name' => 'Kinh nghiệm du lịch', 'description' => 'Chia sẻ kinh nghiệm, mẹo hay khi đi du lịch'],
             ['name' => 'Ẩm thực', 'description' => 'Khám phá ẩm thực đặc sắc các vùng miền'],
-            ['name' => 'Khách sạn & Homestay', 'description' => 'Review khách sạn, homestay, nơi lưu trú'],
             ['name' => 'Điểm đến', 'description' => 'Giới thiệu các địa điểm du lịch hấp dẫn'],
-            ['name' => 'Mẹo du lịch', 'description' => 'Mẹo tiết kiệm, chuẩn bị hành lý, di chuyển'],
+            ['name' => 'Checkin', 'description' => 'Những địa điểm checkin sống ảo cực chất'],
         ];
 
         $categories = [];
@@ -63,8 +61,9 @@ class DatabaseSeeder extends Seeder
 <p>Khu bảo tồn thiên nhiên với hệ sinh thái phong phú, là nơi sinh sống của loài voọc chà vá chân nâu quý hiếm. Đường lên Sơn Trà quanh co tuyệt đẹp, thích hợp cho chụp ảnh.</p>
 <h2>5. Phố cổ Hội An</h2>
 <p>Cách Đà Nẵng chỉ 30km, Hội An là di sản văn hóa thế giới với những con phố đèn lồng lung linh mỗi đêm rằm.</p>',
-                'category_id' => 4,
+                'category_id' => 2, // Điểm đến
                 'location' => 'Đà Nẵng',
+                'image' => 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80',
                 'views_count' => 1250,
             ],
             [
@@ -80,8 +79,9 @@ class DatabaseSeeder extends Seeder
 <p>Sáng tắm biển bãi Sao - bãi biển đẹp nhất Phú Quốc. Mua quà lưu niệm: nước mắm, tiêu Phú Quốc, trái sim.</p>
 <h2>Chi phí ước tính</h2>
 <p>Vé máy bay: 1.500.000đ - 2.500.000đ khứ hồi. Khách sạn: 400.000 - 800.000đ/đêm. Ăn uống: 200.000đ/ngày. Tổng: khoảng 4-6 triệu/người.</p>',
-                'category_id' => 1,
+                'category_id' => 2, // Điểm đến
                 'location' => 'Phú Quốc',
+                'image' => 'https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb?w=800&q=80',
                 'views_count' => 980,
             ],
             [
@@ -97,8 +97,9 @@ class DatabaseSeeder extends Seeder
 <p>Giống bánh xèo nhưng nhỏ hơn, giòn rụm, nhân tôm thịt. Cuốn với rau sống, chấm nước lèo đặc biệt.</p>
 <h2>5. Chè Huế</h2>
 <p>Huế nổi tiếng với hàng chục loại chè: chè bột lọc, chè đậu xanh đánh, chè hạt sen, chè trôi nước.</p>',
-                'category_id' => 2,
+                'category_id' => 1, // Ẩm thực
                 'location' => 'Huế',
+                'image' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
                 'views_count' => 756,
             ],
             [
@@ -112,8 +113,9 @@ class DatabaseSeeder extends Seeder
 <p>View toàn cảnh thành phố từ tầng thượng. Phòng hiện đại, có bể bơi ngoài trời. Giá: 700.000 - 1.500.000đ/đêm.</p>
 <h2>4. Zen Valley Dalat</h2>
 <p>Nằm trong thung lũng yên tĩnh, bao quanh bởi rừng thông. Phong cách Nhật Bản tối giản. Giá: 400.000 - 700.000đ/đêm.</p>',
-                'category_id' => 3,
+                'category_id' => 3, // Checkin
                 'location' => 'Đà Lạt',
+                'image' => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
                 'views_count' => 623,
             ],
             [
@@ -129,8 +131,9 @@ class DatabaseSeeder extends Seeder
 <p>Hỏi người dân địa phương để tìm quán ăn ngon, rẻ. Tránh các nhà hàng gần khu du lịch vì giá thường đắt gấp 2-3 lần.</p>
 <h2>5. Sử dụng phương tiện công cộng</h2>
 <p>Xe buýt, grab bike rẻ hơn nhiều so với taxi. Ở các thành phố lớn nên đi xe buýt hoặc thuê xe máy.</p>',
-                'category_id' => 5,
+                'category_id' => 2, // Điểm đến
                 'location' => 'Việt Nam',
+                'image' => 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
                 'views_count' => 1432,
             ],
             [
@@ -144,8 +147,9 @@ class DatabaseSeeder extends Seeder
 <p>Trek từ Sapa qua bản Cát Cát, Lao Chải, Tả Van. Ngắm ruộng bậc thang, giao lưu với người H\'Mông, thưởng thức thắng cố.</p>
 <h2>Ngày 3: Fansipan</h2>
 <p>Đi cáp treo lên đỉnh Fansipan - nóc nhà Đông Dương 3.143m. Ngắm biển mây, check-in cổng trời.</p>',
-                'category_id' => 4,
+                'category_id' => 3, // Checkin
                 'location' => 'Sapa, Lào Cai',
+                'image' => 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
                 'views_count' => 875,
             ],
             [
@@ -159,8 +163,9 @@ class DatabaseSeeder extends Seeder
 <p>Cơm tấm sườn bì chả với nước mắm pha đặc trưng Sài Gòn. Sườn nướng than hoa thơm lừng.</p>
 <h2>4. Bún thịt nướng Nguyễn Tri Phương</h2>
 <p>Bún thịt nướng kèm chả giò, rau sống tươi mát. Nước mắm chua ngọt vừa miệng. Quán nhỏ nhưng lúc nào cũng đông.</p>',
-                'category_id' => 2,
+                'category_id' => 1, // Ẩm thực
                 'location' => 'TP. Hồ Chí Minh',
+                'image' => 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80',
                 'views_count' => 1100,
             ],
             [
@@ -174,8 +179,9 @@ class DatabaseSeeder extends Seeder
 <p>Du thuyền ngắm vịnh, chèo kayak, tham quan hang Sửng Sốt, đảo Ti Tốp, làng chài Cửa Vạn, bơi lội, lặn biển.</p>
 <h2>Ẩm thực</h2>
 <p>Hải sản tươi sống tại chợ Hạ Long, chả mực, bánh cuốn chả mực, sá sùng, sam biển.</p>',
-                'category_id' => 1,
+                'category_id' => 2, // Điểm đến
                 'location' => 'Hạ Long, Quảng Ninh',
+                'image' => 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80',
                 'views_count' => 920,
             ],
             [
@@ -189,8 +195,9 @@ class DatabaseSeeder extends Seeder
 <p>LUÔN đi theo nhóm và thuê porter/guide. Không đi một mình. Kiểm tra thời tiết trước khi đi. Tránh mùa mưa (tháng 6-9).</p>
 <h2>Lịch trình 3 ngày</h2>
 <p>Ngày 1: Đi từ Tà Năng qua đồi cỏ, hạ trại ven suối. Ngày 2: Vượt qua rừng, suối, dốc cao, ngủ ở bãi Tà Năng. Ngày 3: Hoàn thành hành trình tại Phan Dũng.</p>',
-                'category_id' => 1,
+                'category_id' => 3, // Checkin
                 'location' => 'Lâm Đồng - Bình Thuận',
+                'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80',
                 'views_count' => 670,
             ],
             [
@@ -204,8 +211,9 @@ class DatabaseSeeder extends Seeder
 <p>Quần thể chùa lớn nhất Đông Nam Á với nhiều kỷ lục: tượng Phật bằng đồng lớn nhất, hành lang La Hán dài nhất.</p>
 <h2>Hang Múa</h2>
 <p>Leo 500 bậc đá lên đỉnh Hang Múa, ngắm toàn cảnh Tam Cốc từ trên cao. Đặc biệt đẹp lúc hoàng hôn.</p>',
-                'category_id' => 4,
+                'category_id' => 2, // Điểm đến
                 'location' => 'Ninh Bình',
+                'image' => 'https://images.unsplash.com/photo-1582298627725-d91ab2dcc2c8?w=800&q=80',
                 'views_count' => 810,
             ],
         ];
@@ -218,6 +226,7 @@ class DatabaseSeeder extends Seeder
             $post->slug = Str::slug($postData['title']) . '-' . Str::random(5);
             $post->excerpt = $postData['excerpt'];
             $post->content = $postData['content'];
+            $post->image = $postData['image'] ?? null;
             $post->location = $postData['location'];
             $post->views_count = $postData['views_count'];
             $post->status = 'published';

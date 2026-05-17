@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root{--primary:#0ea5e9;--bg-dark:#0f172a;--bg-card:#1e293b;--bg-sidebar:#111827;--text-primary:#f8fafc;--text-secondary:#94a3b8;--glass-border:rgba(148,163,184,0.1);--gradient-primary:linear-gradient(135deg,#0ea5e9 0%,#06b6d4 50%,#10b981 100%);}
+        :root{--primary:#0ea5e9;--bg-dark:#f8fafc;--bg-card:#ffffff;--bg-sidebar:#ffffff;--text-primary:#0f172a;--text-secondary:#64748b;--glass-border:rgba(0,0,0,0.1);--gradient-primary:linear-gradient(135deg,#0ea5e9 0%,#06b6d4 50%,#10b981 100%);}
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text-primary);min-height:100vh;}
         .admin-sidebar{width:260px;background:var(--bg-sidebar);min-height:100vh;position:fixed;left:0;top:0;border-right:1px solid var(--glass-border);z-index:100;transition:transform 0.3s;}

@@ -22,10 +22,37 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
+        $foodPosts = Post::published()
+            ->with(['user', 'category'])
+            ->whereHas('category', function ($q) {
+                $q->where('name', 'like', '%Ẩm thực%');
+            })
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $destinationPosts = Post::published()
+            ->with(['user', 'category'])
+            ->whereHas('category', function ($q) {
+                $q->where('name', 'like', '%Điểm đến%');
+            })
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $checkinPosts = Post::published()
+            ->with(['user', 'category'])
+            ->whereHas('category', function ($q) {
+                $q->where('name', 'like', '%Checkin%');
+            })
+            ->latest()
+            ->take(3)
+            ->get();
+
         $categories = Category::withCount(['posts' => function ($q) {
             $q->where('status', 'published');
         }])->get();
 
-        return view('home', compact('featuredPosts', 'latestPosts', 'categories'));
+        return view('home', compact('featuredPosts', 'latestPosts', 'foodPosts', 'destinationPosts', 'checkinPosts', 'categories'));
     }
 }

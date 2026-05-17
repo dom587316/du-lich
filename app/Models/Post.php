@@ -66,6 +66,9 @@ class Post extends Model
     public function getImageUrlAttribute(): string
     {
         if ($this->image) {
+            if (Str::startsWith($this->image, ['http://', 'https://'])) {
+                return $this->image;
+            }
             return asset('storage/' . $this->image);
         }
         return 'https://placehold.co/800x400/0D8ABC/white?text=' . urlencode(Str::limit($this->title, 20));

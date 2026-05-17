@@ -16,7 +16,7 @@
                 </span>
                 <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2;">
                     Cẩm nang
-                    <span class="gradient-text" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Du lịch</span>
+                    <span class="gradient-text">Du lịch</span>
                     <br>Trực tuyến
                 </h1>
                 <p class="fs-5 text-secondary mb-4" style="max-width: 500px;">
@@ -115,7 +115,7 @@
                                 <i class="{{ $icon }} fa-lg text-white"></i>
                             </div>
                         </div>
-                        <h5 class="fw-bold text-white mb-2">{{ $category->name }}</h5>
+                        <h5 class="fw-bold text-dark mb-2">{{ $category->name }}</h5>
                         <p class="text-secondary small mb-2">{{ Str::limit($category->description, 80) }}</p>
                         <span class="badge-category">{{ $category->posts_count }} bài viết</span>
                     </div>
@@ -136,86 +136,78 @@
         </div>
         <div class="row g-4">
             @foreach($featuredPosts as $post)
-            <div class="col-lg-4 col-md-6 animate-fade-in-up">
-                <div class="card-glass h-100">
-                    <div class="card-img-wrapper">
-                        <img src="{{ $post->image_url }}" class="card-img-top" alt="{{ $post->title }}">
-                        <div class="card-img-overlay-gradient"></div>
-                        <div class="position-absolute top-0 start-0 p-3">
-                            <span class="badge-category">{{ $post->category->name }}</span>
-                        </div>
-                        <div class="position-absolute top-0 end-0 p-3">
-                            <span class="badge bg-warning text-dark fw-bold">
-                                <i class="fas fa-eye me-1"></i>{{ number_format($post->views_count) }}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">
-                            <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
-                        </h5>
-                        <p class="card-text flex-grow-1">{{ Str::limit($post->excerpt ?? strip_tags($post->content), 100) }}</p>
-                        <div class="meta-info mt-3">
-                            <span><i class="fas fa-user me-1"></i> {{ $post->user->name }}</span>
-                            <span><i class="fas fa-calendar me-1"></i> {{ $post->created_at->format('d/m/Y') }}</span>
-                            @if($post->location)
-                            <span><i class="fas fa-map-marker-alt me-1"></i> {{ $post->location }}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('components.post-card', ['post' => $post, 'showViews' => true, 'showDate' => true])
             @endforeach
         </div>
     </div>
 </section>
 @endif
 
-<!-- Latest Posts -->
+<!-- Food Section -->
+@if($foodPosts->count())
 <section class="py-5">
     <div class="container">
         <div class="section-header d-flex justify-content-between align-items-center">
             <div>
-                <h2><i class="fas fa-clock text-info me-2"></i> Bài viết <span class="gradient-text">Mới nhất</span></h2>
-                <p>Cập nhật mỗi ngày</p>
+                <h2><i class="fas fa-utensils text-danger me-2"></i> Chuyên mục <span class="gradient-text">Ẩm thực</span></h2>
+                <p>Khám phá thế giới ẩm thực phong phú</p>
             </div>
-            <a href="{{ route('posts.index') }}" class="btn btn-outline-custom">
+            <a href="{{ route('posts.index', ['category' => 'am-thuc']) }}" class="btn btn-outline-custom">
                 Xem tất cả <i class="fas fa-arrow-right ms-1"></i>
             </a>
         </div>
         <div class="row g-4">
-            @foreach($latestPosts as $post)
-            <div class="col-lg-4 col-md-6 animate-fade-in-up">
-                <div class="card-glass h-100">
-                    <div class="card-img-wrapper">
-                        <img src="{{ $post->image_url }}" class="card-img-top" alt="{{ $post->title }}">
-                        <div class="card-img-overlay-gradient"></div>
-                        <div class="position-absolute top-0 start-0 p-3">
-                            <span class="badge-category">{{ $post->category->name }}</span>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">
-                            <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
-                        </h5>
-                        <p class="card-text flex-grow-1">{{ Str::limit($post->excerpt ?? strip_tags($post->content), 100) }}</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="meta-info">
-                                <span><i class="fas fa-user me-1"></i> {{ $post->user->name }}</span>
-                            </div>
-                            <div class="stars">
-                                @for($i = 1; $i <= 5; $i++)
-                                    <i class="fas fa-star{{ $i <= $post->average_rating ? '' : ' empty' }}" style="font-size: 0.8rem;"></i>
-                                @endfor
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @foreach($foodPosts as $post)
+            @include('components.post-card', ['post' => $post])
             @endforeach
         </div>
     </div>
 </section>
+@endif
+
+<!-- Destinations Section -->
+@if($destinationPosts->count())
+<section class="py-5" style="background: rgba(14, 165, 233, 0.03);">
+    <div class="container">
+        <div class="section-header d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-map-marked-alt text-success me-2"></i> Chuyên mục <span class="gradient-text">Điểm đến</span></h2>
+                <p>Những địa điểm không thể bỏ lỡ</p>
+            </div>
+            <a href="{{ route('posts.index', ['category' => 'diem-den']) }}" class="btn btn-outline-custom">
+                Xem tất cả <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        <div class="row g-4">
+            @foreach($destinationPosts as $post)
+            @include('components.post-card', ['post' => $post])
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- Check-in / Homestay Section -->
+@if($checkinPosts->count())
+<section class="py-5">
+    <div class="container">
+        <div class="section-header d-flex justify-content-between align-items-center">
+            <div>
+                <h2><i class="fas fa-hotel text-info me-2"></i> Chuyên mục <span class="gradient-text">Check-in</span></h2>
+                <p>Khách sạn, Homestay & Góc sống ảo</p>
+            </div>
+            <a href="{{ route('posts.index', ['category' => 'checkin']) }}" class="btn btn-outline-custom">
+                Xem tất cả <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        <div class="row g-4">
+            @foreach($checkinPosts as $post)
+            @include('components.post-card', ['post' => $post])
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- CTA Section -->
 <section class="py-5">
